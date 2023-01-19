@@ -1,69 +1,49 @@
-import React from 'react'
-import styles from "../css/topnav.module.css"
-import { useNavigate } from "react-router-dom";
-// import Badge from '@mui/material/Badge';
+// import React from 'react'
+import { NavLink} from "react-router-dom";
 
-// import { GrCart } from "react-icons/gr";
+// import styles from "../css/topnavbar.module.css";
+
+const links= [
+  {path:"/",title:"HEALTHKART"},
+  {path:"/searchbar",title:"i"},
+  {path:"/login",title:"Login"},
+  {path:"/carticon",title:"CartLogo"}
+] 
+
+
+
+
 
 export const TopNavbar = () => {
-    let navigate = useNavigate();
+    
   return (
-    <div>
-        <div className={styles.navwrapper}>
-            <ul className={styles.listnav}>
-                <li className = {styles.logo}>
-                    <div onClick={() => navigate('/')}>
-                    <img src = "./image/logoimg.png=" className={styles.logoimg}alt="logo"/>
-                    </div>
-                </li>
-                <li className={styles.search}>
-                    <div >
-                        <input type = "text" placeholder =" Search for Products, brands.." className={styles.inputsearch}/>
-                    </div>
-                    
-                </li>
-                <li>
-                    
-                </li>
-                <li>
-                    <div>
-                        <button>Login</button>
-                    </div>
-                </li>
-                <li>
-                <div>
-                       <p>CartLogo</p>
-                    </div>
-                    
-                </li>
-                <li>
-                    <div>
-                    {/* <Badge color="secondary" 
-            sx={{
-              "& .MuiBadge-badge": {
-                color: "#fff",
-                backgroundColor: "#00c2c1",
-                marginTop:1,
-                width:2,
-                height:15,
-               
-              }
-            }}
-            anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'right',
-              }}
+    <div style={{
+      display:"flex",
+      alignItems:"center",
+      justifyContent:"space-around",
+      padding:"10px",
+      backgroundColor:"pink"
+      
+  }}>
+     
+ 
 
-            badgeContent={0} showZero>
-          <GrCart/>
-        </Badge> */}
-                    </div>
-                </li>
-            </ul>
-        </div>
+     {
+      links.map((link) =>
+      <NavLink
+      // style={({isActive})=>{
+      //   return isActive ? activeLinkStyle : defaultLinkStyle;
+      // }}
+      className={({isActive})=>{
+          return isActive 
+      }}
+       key={link.path} to={link.path}>{link.title}</NavLink>)
+     }
+
+    
 
 
-    </div>
+  </div>
   )
 }
 export default TopNavbar;
